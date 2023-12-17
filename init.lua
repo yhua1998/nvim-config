@@ -1,0 +1,32 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = ' '
+
+require 'lazy'.setup('plugins')
+
+vim.cmd('colorscheme everforest')
+
+require 'base'
+require 'keymap'
+require 'p-lsp'
+require 'lsp-lua'
+require 'p-conform'
+require 'p-tree'
+require 'p-telescope'
+require 'lsp-python'
+require 'lsp-cmp'
+require 'lsp-treesitter'
+require 'p-toggleterm'
+require 'p-indent'
+
